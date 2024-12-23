@@ -1,19 +1,19 @@
 # daily_reminder.py
 
-# Prompt for task description
-task = input("Please enter a task description: ").strip()
+# Prompt for task description with exact message
+task = input("Enter your task: ").strip()
 
 # Prompt for priority level and check if it is valid
-priority = input("Enter the priority of the task (high, medium, low): ").strip().lower()
+priority = input("Priority (high/medium/low): ").strip().lower()
 while priority not in ["high", "medium", "low"]:
     print("Invalid priority! Please enter 'high', 'medium', or 'low'.")
-    priority = input("Enter the priority of the task (high, medium, low): ").strip().lower()
+    priority = input("Priority (high/medium/low): ").strip().lower()
 
 # Prompt for time-bound status and check if it's valid
-time_bound = input("Is this task time-bound? (yes/no): ").strip().lower()
+time_bound = input("Is it time-bound? (yes/no): ").strip().lower()
 while time_bound not in ["yes", "no"]:
     print("Invalid response! Please enter 'yes' or 'no'.")
-    time_bound = input("Is this task time-bound? (yes/no): ").strip().lower()
+    time_bound = input("Is it time-bound? (yes/no): ").strip().lower()
 
 # Process the task based on priority using Match Case
 match priority:
@@ -32,4 +32,5 @@ if time_bound == "yes":
 
 # Provide a customized reminder and print it
 print(reminder)
+
 
