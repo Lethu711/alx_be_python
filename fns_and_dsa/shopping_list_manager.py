@@ -46,6 +46,7 @@ def view_list(item_list):
             print(f"{index}. {item}")
 
 def main():
+    print("Shopping List Manager")
     shopping_list = []
     mock_inputs = ["1", "Apples", "1", "Bananas", "3", "2", "Apples", "3", "4"]
 
