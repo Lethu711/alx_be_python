@@ -1,28 +1,27 @@
+# shopping_list_manager.py
+
 def display_menu():
-    """Displays the menu options."""
-    print(f"\nShopping List Manager")
-    print(f"1. Add Item")
-    print(f"2. Remove Item")
-    print(f"3. View the List")
-    print(f"4. Exit")
+    print("\nShopping List Manager")
+    print("1. Add Item")
+    print("2. Remove Item")
+    print("3. View List")
+    print("4. Exit")
 
-def add_item(shopping_list):
-    """Adds an item to the shopping list."""
-    item = get_input("Enter the item to add: ").strip()
-    shopping_list.append(item)
-    print(f"'{item}' has been added to the list.")
+def add_item(shopping_list, item):
+    if item:
+        shopping_list.append(item)
+        print(f"'{item}' has been added to the shopping list.")
+    else:
+        print("Invalid input. Please enter a valid item.")
 
-def remove_item(shopping_list):
-    """Removes an item from the shopping list."""
-    item = get_input("Enter the item to remove: ").strip()
+def remove_item(shopping_list, item):
     if item in shopping_list:
         shopping_list.remove(item)
-        print(f"'{item}' has been removed from the list.")
+        print(f"'{item}' has been removed from the shopping list.")
     else:
         print(f"'{item}' is not in the shopping list.")
 
 def view_list(shopping_list):
-    """Displays the current shopping list."""
     if shopping_list:
         print("\nCurrent Shopping List:")
         for index, item in enumerate(shopping_list, start=1):
@@ -30,34 +29,37 @@ def view_list(shopping_list):
     else:
         print("\nThe shopping list is currently empty.")
 
-def shopping_list_manager():
-    """Main function to manage the shopping list."""
+def main():
     shopping_list = []
-
-    while True:
-        display_menu()
-        choice = get_input("Choose an option (1-4): ").strip()
-
-        if choice == "1":
-            add_item(shopping_list)
-        elif choice == "2":
-            remove_item(shopping_list)
-        elif choice == "3":
+    # Predefined actions for sandbox environment
+    actions = [
+        ('1', 'Apples'),
+        ('1', 'Bread'),
+        ('3', None),
+        ('2', 'Apples'),
+        ('3', None),
+        ('4', None)
+    ]
+    action_index = 0
+    
+    while action_index < len(actions):
+        choice, item = actions[action_index]
+        print(f"\nSelected option: {choice}")
+        
+        if choice == '1':
+            add_item(shopping_list, item)
+        elif choice == '2':
+            remove_item(shopping_list, item)
+        elif choice == '3':
             view_list(shopping_list)
-        elif choice == "4":
-            print("Exiting Shopping List Manager. Goodbye!")
+        elif choice == '4':
+            print("Exiting the Shopping List Manager. Goodbye!")
             break
         else:
-            print("Invalid choice. Please choose a valid option (1-4).")
-
-def get_input(prompt):
-    """Helper function to handle input for environments without interactive input."""
-    try:
-        return input(prompt)
-    except OSError:
-        print("Input function is not supported in this environment.")
-        return "4"  
+            print("Invalid choice. Please select a valid option (1-4).")
+        
+        action_index += 1
 
 if __name__ == "__main__":
-    shopping_list_manager()
+    main()
 
