@@ -31,14 +31,13 @@ def view_list(shopping_list):
 
 def main():
     shopping_list = []
-    # Predefined actions for sandbox environment
     actions = [
         ('1', 'Apples'),
         ('1', 'Bread'),
-        ('3', None),
+        ('3', 'Tomatoes'),
         ('2', 'Apples'),
-        ('3', None),
-        ('4', None)
+        ('3', 'Milk'),
+        ('4', 'Eggs')
     ]
     action_index = 0
     
