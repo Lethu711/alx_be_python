@@ -9,7 +9,7 @@ def perform_operation(num1, num2, operation):
 
     Returns:
         float or str: The result of the arithmetic operation, or a specific message in case of division by zero.
-    ""
+    """
     if operation == 'add':
         return num1 + num2
     elif operation == 'subtract':
