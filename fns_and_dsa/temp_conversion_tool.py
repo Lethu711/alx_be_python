@@ -1,5 +1,3 @@
-# temp_conversion_tool.py
-
 # Global Conversion Factors
 FAHRENHEIT_TO_CELSIUS_FACTOR = 5 / 9  # Conversion factor from Fahrenheit to Celsius
 CELSIUS_TO_FAHRENHEIT_FACTOR = 9 / 5  # Conversion factor from Celsius to Fahrenheit
@@ -7,12 +5,14 @@ CELSIUS_TO_FAHRENHEIT_FACTOR = 9 / 5  # Conversion factor from Celsius to Fahren
 # Conversion function to convert Fahrenheit to Celsius
 def convert_to_celsius(fahrenheit):
     """Converts Fahrenheit to Celsius using the global conversion factor."""
+    global FAHRENHEIT_TO_CELSIUS_FACTOR  # Reference global variable
     celsius = (fahrenheit - 32) * FAHRENHEIT_TO_CELSIUS_FACTOR
     return celsius
 
 # Conversion function to convert Celsius to Fahrenheit
 def convert_to_fahrenheit(celsius):
     """Converts Celsius to Fahrenheit using the global conversion factor."""
+    global CELSIUS_TO_FAHRENHEIT_FACTOR  # Reference global variable
     fahrenheit = (celsius * CELSIUS_TO_FAHRENHEIT_FACTOR) + 32
     return fahrenheit
 
