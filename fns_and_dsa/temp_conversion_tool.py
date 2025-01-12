@@ -18,6 +18,10 @@ def convert_to_fahrenheit(celsius):
 
 # Main user interaction section
 def main():
+    # Debugging: Ensure global variables are defined correctly
+    print(f"FAHRENHEIT_TO_CELSIUS_FACTOR: {FAHRENHEIT_TO_CELSIUS_FACTOR}")
+    print(f"CELSIUS_TO_FAHRENHEIT_FACTOR: {CELSIUS_TO_FAHRENHEIT_FACTOR}")
+
     try:
         # Ask the user to input the temperature value with unit (Celsius or Fahrenheit)
         temperature_input = input("Enter the temperature value (e.g., 100 or 100F or 100C): ").strip()
@@ -42,7 +46,7 @@ def main():
         # Handle invalid numeric inputs and other value errors
         print(f"Error: {ve}")
     except IndexError:
-        # Handle cases where the input is empty or ends unexpectedly
+        # Handle cases where the input is empty or improperly formatted
         print("Error: Input is empty or improperly formatted.")
 
 if __name__ == "__main__":
