@@ -5,18 +5,9 @@ def display_menu():
     print("3. View list")
     print("4. Quit")
 
-def get_mock_input(prompt, inputs):
-    if inputs:
-        response = inputs.pop(0)
-        print(f"{prompt}{response}")
-        return response
-    else:
-        print(f"{prompt}")
-        return "4"  # Default to quit if inputs run out
-
-def add_item(item_list, inputs):
-    item = get_mock_input("Enter the item to add: ", inputs).strip()
-    if not item:
+def add_item(item_list):
+    item = input("Enter the item to add: ")
+    if not item.strip():
         print("Item cannot be empty.")
         return
     if item.lower() in (i.lower() for i in item_list):
@@ -25,9 +16,9 @@ def add_item(item_list, inputs):
         item_list.append(item)
         print(f"{item} has been added to the shopping list.")
 
-def remove_item(item_list, inputs):
-    item = get_mock_input("Enter the item to remove: ", inputs).strip()
-    if not item:
+def remove_item(item_list):
+    item = input("Enter the item to remove: ")
+    if not item.strip():
         print("Item cannot be empty.")
         return
     for existing_item in item_list:
@@ -48,16 +39,15 @@ def view_list(item_list):
 def main():
     print("Shopping List Manager")
     shopping_list = []
-    mock_inputs = ["1", "Apples", "1", "Bananas", "3", "2", "Apples", "3", "4"]
-
+    
     while True:
         display_menu()
-        choice = get_mock_input("Enter your choice (1-4): ", mock_inputs).strip()
+        choice = input("Enter your choice (1-4): ").strip()
 
         if choice == "1":
-            add_item(shopping_list, mock_inputs)
+            add_item(shopping_list)
         elif choice == "2":
-            remove_item(shopping_list, mock_inputs)
+            remove_item(shopping_list)
         elif choice == "3":
             view_list(shopping_list)
         elif choice == "4":
