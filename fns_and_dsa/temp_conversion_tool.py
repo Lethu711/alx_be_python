@@ -16,38 +16,27 @@ def convert_to_fahrenheit(celsius):
     fahrenheit = (celsius * CELSIUS_TO_FAHRENHEIT_FACTOR) + 32
     return fahrenheit
 
-# Main user interaction section
+# Main user interaction section with input for temperature and unit
 def main():
-    # Debugging: Ensure global variables are defined correctly
-    print(f"FAHRENHEIT_TO_CELSIUS_FACTOR: {FAHRENHEIT_TO_CELSIUS_FACTOR}")
-    print(f"CELSIUS_TO_FAHRENHEIT_FACTOR: {CELSIUS_TO_FAHRENHEIT_FACTOR}")
-
     try:
-        # Ask the user to input the temperature value with unit (Celsius or Fahrenheit)
-        temperature_input = input("Enter the temperature value (e.g., 100 or 100F or 100C): ").strip()
+        # Ask the user for a temperature value
+        temperature_input = float(input("Enter the temperature to convert: "))
+        
+        # Ask if the input is in Celsius or Fahrenheit
+        unit = input("Is this temperature in Celsius or Fahrenheit? (C/F): ").strip().upper()
 
-        # Ensure the input isn't empty
-        if not temperature_input:
-            raise ValueError("Input cannot be empty.")
+        # Conversion and output based on the unit input
+        if unit == 'C':
+            converted_temp = convert_to_fahrenheit(temperature_input)
+            print(f"{temperature_input}°C is {converted_temp}°F")
+        elif unit == 'F':
+            converted_temp = convert_to_celsius(temperature_input)
+            print(f"{temperature_input}°F is {converted_temp}°C")
+        else:
+            print("Invalid unit. Please enter 'C' for Celsius or 'F' for Fahrenheit.")
 
-        # Check if input ends with 'F' (Fahrenheit) or 'C' (Celsius)
-        if temperature_input[-1].upper() == 'F':  # Fahrenheit input
-            temperature_value = float(temperature_input[:-1].strip())  # Extract numeric part
-            converted_temp = convert_to_celsius(temperature_value)
-            print(f"{temperature_value}°F is equal to {converted_temp:.2f}°C.")
-        elif temperature_input[-1].upper() == 'C':  # Celsius input
-            temperature_value = float(temperature_input[:-1].strip())  # Extract numeric part
-            converted_temp = convert_to_fahrenheit(temperature_value)
-            print(f"{temperature_value}°C is equal to {converted_temp:.2f}°F.")
-        else:  # Invalid input
-            raise ValueError("Invalid temperature. Please enter a numeric value with 'C' or 'F' at the end.")
-    
-    except ValueError as ve:
-        # Handle invalid numeric inputs and other value errors
-        print(f"Error: {ve}")
-    except IndexError:
-        # Handle cases where the input is empty or improperly formatted
-        print("Error: Input is empty or improperly formatted.")
+    except ValueError:
+        print("Please enter a valid number for the temperature.")
 
 if __name__ == "__main__":
     main()
