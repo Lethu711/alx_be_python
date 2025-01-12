@@ -1,3 +1,5 @@
+from datetime import datetime, timedelta
+
 def display_current_datetime():
     # Get the current date and time
     current_date = datetime.now()
