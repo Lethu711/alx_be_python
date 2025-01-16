@@ -25,7 +25,7 @@ def main():
 
     if args.operation is None:
         parser.print_help()
-        sys.exit(0)
+        return  # Changed from sys.exit(0) to return for graceful handling
 
     if args.operation in ["deposit", "withdraw"] and args.amount is None:
         parser.error(f"The '{args.operation}' operation requires an amount.")
